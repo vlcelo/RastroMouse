@@ -22,17 +22,66 @@ justify-content: center;
 body{
 width: 100vw;
 min-height: 100vh;
+background-color: #ffefc460;
 }
 
 h1{
 font-family: sans-serif;
 font-size: 5em;
-color: #ddd;
+color: #2f004e;
+transform: rotate(-15deg) skew (-10deg);
+text-align: center;
+text-shadow: 
+1px 1px 0 #2f004e,
+3px 3px 0 #944bc5,
+4px 4px 0 #944bc5,
+5px 5px 0 #944bc5,
+10px 10px 20px #00000060;
+}
+
+.trail{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border : 2px solid #ad00bd;
+    background: #ad00bd;
+    position: fixed;
+    animation: come 1s linear forwards;
+
+}
+@keyframes come {
+    0%{
+        transform: scale(0);
+    }
+    10%{
+        transform: scale(1) translateY(0px);
+        opacity: 1;
+    }
+    100%{
+        transform: scale(0) translateY(100px);
+        opacity: 0;
+    }
 }
 
 </style>
 <body class="flex">
 <h1>celo empty stack developer
-</h1>    
+</h1>
+<script>
+    var body=document.body;
+
+    document.addEventListener('mousemove', (e) =>{
+        var elem=document.createElement('div');
+        elem.setAttribute('class','trail')
+        elem.setAttribute('style',`left: ${e.clientX - 10}px; top: ${e.clientY - 10}px;`)
+    
+        elem.onanimationend=()=>{
+            elem.remove();
+        }
+
+        body.insertAdjacentElement ('beforeend',elem);
+        
+    })
+</script>
 </body>
 </html>
